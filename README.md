@@ -2,7 +2,7 @@
 
 A Java console application that stores employee records, handles leave requests and applies different leave rules depending on the type of employee. It was built step by step to practise object-oriented programming, then refactored.
 
-**GitHub repository:** https://github.com/YOUR-USERNAME/Leave-Management-System
+**GitHub repository:** https://github.com/YOUR-USERNAME/Leave-Management-System](https://github.com/srishtisharmaa/Leave-Management-System-.git
 
 ## Requirements
 
