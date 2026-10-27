@@ -3,7 +3,7 @@ package com.leavemanagement.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Employee {
+public abstract class Employee {
 
     private String employeeId;
     private String employeeName;
@@ -33,6 +33,14 @@ public class Employee {
         return true;
     }
 
+    // Method overloading: same name, different parameters
+    public boolean applyLeave(int days, String reason) {
+        System.out.println("Reason: " + reason);
+        return applyLeave(days);
+    }
+
+    public abstract String getEmployeeType();
+
     public boolean cancelLeave(int days) {
         if (!leaveHistory.remove(Integer.valueOf(days))) {
             System.out.println("No such leave to cancel for " + employeeName);
@@ -48,6 +56,6 @@ public class Employee {
     }
 
     public void displayDetails() {
-        System.out.println(employeeId + " | " + employeeName + " | " + department + " | balance = " + leaveBalance);
+        System.out.println(getEmployeeType() + " | " + employeeId + " | " + employeeName + " | " + department + " | balance = " + leaveBalance);
     }
 }

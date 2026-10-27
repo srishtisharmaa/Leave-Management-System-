@@ -14,4 +14,9 @@ public class Intern extends Employee {
         }
         return super.applyLeave(days);
     }
+
+    @Override
+    public String getEmployeeType() {
+        return "Intern";
+    }
 }

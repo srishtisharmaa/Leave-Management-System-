@@ -14,4 +14,9 @@ public class FullTimeEmployee extends Employee {
         }
         return super.applyLeave(days);
     }
+
+    @Override
+    public String getEmployeeType() {
+        return "Full-Time";
+    }
 }

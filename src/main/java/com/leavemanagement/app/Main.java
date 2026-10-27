@@ -2,18 +2,22 @@ package com.leavemanagement.app;
 
 import com.leavemanagement.model.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
-        FullTimeEmployee e1 = new FullTimeEmployee("E101", "Aarav Sharma", "Engineering");
-        PartTimeEmployee e2 = new PartTimeEmployee("E102", "Meera Nair", "HR");
-        Intern e3 = new Intern("E103", "Rohan Das", "Finance");
+        List<Employee> employees = new ArrayList<>();
+        employees.add(new FullTimeEmployee("E101", "Aarav Sharma", "Engineering"));
+        employees.add(new PartTimeEmployee("E102", "Meera Nair", "HR"));
+        employees.add(new Intern("E103", "Rohan Das", "Finance"));
 
-        e1.applyLeave(8);
-        e2.applyLeave(8);   // rejected: max 5
-        e3.applyLeave(2);
-
-        e1.displayDetails();
-        e2.displayDetails();
-        e3.displayDetails();
+        // Polymorphism: same call, behaviour depends on the real object type
+        for (Employee e : employees) {
+            e.applyLeave(4, "Personal work");
+        }
+        for (Employee e : employees) {
+            e.displayDetails();
+        }
     }
 }

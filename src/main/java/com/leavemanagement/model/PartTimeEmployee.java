@@ -14,4 +14,9 @@ public class PartTimeEmployee extends Employee {
         }
         return super.applyLeave(days);
     }
+
+    @Override
+    public String getEmployeeType() {
+        return "Part-Time";
+    }
 }
