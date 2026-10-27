@@ -1,0 +1,21 @@
+PASS  apply leave reduces balance
+PASS  cancel leave restores balance
+PASS  cancelling twice is rejected
+PASS  unknown request id is rejected
+PASS  zero days is rejected
+PASS  full-time limit is 10
+PASS  part-time limit is 3
+PASS  intern limit is 2
+PASS  intern needs a reason
+PASS  overloaded applyLeave works without reason
+PASS  insufficient balance is rejected
+PASS  manager gets 8 bonus days
+PASS  manager limit is 15
+PASS  polymorphism: policies differ per type
+PASS  leave history cannot be edited from outside
+PASS  blank name is rejected by constructor
+PASS  duplicate id is rejected
+PASS  unknown employee is rejected
+PASS  service applies leave through the employee
+
+19 passed, 0 failed

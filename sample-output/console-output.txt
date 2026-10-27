@@ -1,0 +1,59 @@
+=== 1. EMPLOYEE RECORDS ===
+[REGISTERED] E101 Aarav Mehta
+[REGISTERED] E102 Diya Nair
+[REGISTERED] E103 Kabir Shah
+E101  | Aarav Mehta  | Engineering  | Full-Time | balance: 18 | max per request: 10
+E102  | Diya Nair    | Support      | Part-Time | balance:  8 | max per request:  3
+E103  | Kabir Shah   | Design       | Intern    | balance:  3 | max per request:  2
+Balance check (E101): 18 days
+
+=== 2. APPLYING FOR LEAVE ===
+[APPROVED]   E101 request #1 | 3 day(s) | APPLIED | reason: Family function | balance now 15
+[APPROVED]   E102 request #1 | 2 day(s) | APPLIED | reason: not given | balance now 6
+[APPROVED]   E103 request #1 | 2 day(s) | APPLIED | reason: Exam preparation | balance now 1
+
+=== 3. LEAVE RULES BY EMPLOYEE TYPE ===
+Aarav Mehta: Full-Time employees can request up to 10 days at a time.
+Diya Nair: Part-Time employees can request up to 3 days at a time.
+Kabir Shah: Interns can request up to 2 days at a time and must give a reason.
+[REJECTED]   E101: Request of 11 day(s) is above the Full-Time limit of 10 per request.
+[REJECTED]   E102: Request of 4 day(s) is above the Part-Time limit of 3 per request.
+[REJECTED]   E103: Request of 3 day(s) is above the Intern limit of 2 per request.
+
+=== 4. OTHER REJECTED REQUESTS ===
+[REJECTED]   E103: Interns must give a reason for leave.
+[REJECTED]   E103: Requested 2 day(s) but only 1 day(s) are left.
+[REJECTED]   E101: Leave days must be greater than zero.
+[REJECTED]   E999: No employee found with ID E999.
+[REJECTED]   E101: An employee with ID E101 is already registered.
+
+=== 5. CANCELLING LEAVE ===
+[CANCELLED]  E101 request #1 | 3 day(s) | CANCELLED | reason: Family function | balance now 18
+[REJECTED]   E101: Request #1 is already cancelled.
+[REJECTED]   E101: Leave request #42 does not exist.
+
+=== 6. LEAVE HISTORY ===
+Aarav Mehta (E101)
+   #1 | 3 day(s) | CANCELLED | reason: Family function
+Diya Nair (E102)
+   #1 | 2 day(s) | APPLIED | reason: not given
+Kabir Shah (E103)
+   #1 | 2 day(s) | APPLIED | reason: Exam preparation
+
+=== 7. CHANGE REQUEST: MANAGER ===
+[REGISTERED] E104 Ananya Rao
+E104  | Ananya Rao   | Product      | Manager   | balance: 24 | max per request: 15
+      team size: 6
+[APPROVED]   E104 request #1 | 12 day(s) | APPLIED | reason: Annual vacation | balance now 12
+[REJECTED]   E104: Request of 16 day(s) is above the Manager limit of 15 per request.
+
+Aarav Mehta: Full-Time employees can request up to 10 days at a time.
+Diya Nair: Part-Time employees can request up to 3 days at a time.
+Kabir Shah: Interns can request up to 2 days at a time and must give a reason.
+Ananya Rao: Managers can request up to 15 days at a time and get 8 bonus days.
+
+=== 8. FINAL BALANCES ===
+E101  Aarav Mehta  Full-Time 18 day(s)
+E102  Diya Nair    Part-Time  6 day(s)
+E103  Kabir Shah   Intern     1 day(s)
+E104  Ananya Rao   Manager   12 day(s)

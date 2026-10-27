@@ -1,0 +1,112 @@
+classDiagram
+    direction TB
+
+    class Employee {
+        <<abstract>>
+        -String employeeId
+        -String name
+        -String department
+        -int leaveBalance
+        -List~LeaveRequest~ leaveRequests
+        -int nextRequestId
+        #Employee(id, name, department, leaveBalance)
+        +getEmployeeType()* String
+        +getMaxDaysPerRequest()* int
+        +getLeavePolicy() String
+        #checkTypeSpecificRules(days, reason) void
+        +applyLeave(days) LeaveRequest
+        +applyLeave(days, reason) LeaveRequest
+        +cancelLeave(requestId) LeaveRequest
+        +checkLeaveBalance() int
+        +displayDetails() void
+        -validate(days, reason) void
+        -findRequest(requestId) LeaveRequest
+        +getLeaveRequests() List~LeaveRequest~
+    }
+
+    class FullTimeEmployee {
+        -int MAX_DAYS_PER_REQUEST = 10
+        +getEmployeeType() String
+        +getMaxDaysPerRequest() int
+    }
+
+    class PartTimeEmployee {
+        -int MAX_DAYS_PER_REQUEST = 3
+        +getEmployeeType() String
+        +getMaxDaysPerRequest() int
+    }
+
+    class Intern {
+        -int MAX_DAYS_PER_REQUEST = 2
+        +getEmployeeType() String
+        +getMaxDaysPerRequest() int
+        #checkTypeSpecificRules(days, reason) void
+        +getLeavePolicy() String
+    }
+
+    class Manager {
+        -int BONUS_LEAVE_DAYS = 8
+        -int MAX_DAYS_PER_REQUEST = 15
+        -int teamSize
+        +getEmployeeType() String
+        +getMaxDaysPerRequest() int
+        +getLeavePolicy() String
+        +displayDetails() void
+    }
+
+    class LeaveRequest {
+        -int requestId
+        -int days
+        -String reason
+        -LeaveStatus status
+        ~cancel() void
+        +isActive() boolean
+    }
+
+    class LeaveStatus {
+        <<enumeration>>
+        APPLIED
+        CANCELLED
+    }
+
+    class LeaveManagementService {
+        -Map~String, Employee~ employees
+        +registerEmployee(employee) void
+        +findEmployee(employeeId) Employee
+        +applyLeave(employeeId, days) LeaveRequest
+        +applyLeave(employeeId, days, reason) LeaveRequest
+        +cancelLeave(employeeId, requestId) LeaveRequest
+        +getAllEmployees() List~Employee~
+    }
+
+    class LeaveException {
+        <<exception>>
+    }
+    class InvalidLeaveRequestException
+    class InsufficientLeaveBalanceException
+    class LeaveRequestNotFoundException
+    class EmployeeNotFoundException
+    class DuplicateEmployeeException
+
+    class Main {
+        +main(args) void
+    }
+
+    Employee <|-- FullTimeEmployee
+    Employee <|-- PartTimeEmployee
+    Employee <|-- Intern
+    FullTimeEmployee <|-- Manager
+
+    Employee "1" *-- "0..*" LeaveRequest : owns
+    LeaveRequest --> LeaveStatus : status
+    LeaveManagementService "1" o-- "0..*" Employee : keeps
+
+    LeaveException <|-- InvalidLeaveRequestException
+    LeaveException <|-- InsufficientLeaveBalanceException
+    LeaveException <|-- LeaveRequestNotFoundException
+    LeaveException <|-- EmployeeNotFoundException
+    LeaveException <|-- DuplicateEmployeeException
+
+    Employee ..> LeaveException : throws
+    LeaveManagementService ..> LeaveException : throws
+    Main ..> LeaveManagementService : uses
